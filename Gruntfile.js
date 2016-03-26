@@ -11,33 +11,10 @@ module.exports = function(grunt) {
             '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
             '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
             ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
-    // Metadata.
+        // Metadata.
         meta: {
           sassPath: 'sass/',
           cssPath: 'css/'
-        },
-        clean: {
-          all: ['<%= meta.cssPath %>'],
-          sourceMap: ['<%= meta.cssPath %>/*.map']
-        },
-        concat: {
-            options: {
-                banner: '<%= banner %>',
-                stripBanners: true
-            },
-            dist: {
-                src: ['bower_components/requirejs/require.js', '<%= concat.dist.dest %>'],
-                dest: 'dist/require.js'
-            },
-        },
-        uglify: {
-            options: {
-                banner: '<%= banner %>'
-            },
-            dist: {
-                src: '<%= concat.dist.dest %>',
-                dest: 'dist/require.min.js'
-            },
         },
         jshint: {
             gruntfile: {
@@ -94,9 +71,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
 
     // Default task.
-    grunt.registerTask('clean', ['clean']);
     grunt.registerTask('hint', ['jshint']);
-    grunt.registerTask('default', ['concat', 'uglify']);
     grunt.registerTask('sassmake', ['sass']);
     grunt.registerTask('preview', ['connect:development']);
 };
