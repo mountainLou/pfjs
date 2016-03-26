@@ -1,0 +1,17 @@
+.#{$namespace}page {
+  height: auto;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  //测试用,正式时需要删除
+  background-color: #efeff4;
+  -webkit-transform: translate(200%, 0%);
+}
+
+.#{$namespace}content {
+  width: 300%;
+  height: auto;
+}
+
